@@ -2,85 +2,108 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <title>The Webpayment Donate Uri</title>
-  <script src="https://www.w3.org/Tools/respec/respec-w3c-common" class="remove"></script>
-  <script class='remove'>
-  "use strict";
-  // See https://github.com/w3c/respec/wiki/ for how to configure ReSpec
-  var respecConfig = {
-    "doRDFa": false,
-    "format": "markdown",
-    "githubAPI": "https://api.github.com/repos/WICG/webpayment-donate-uri",
-    "issueBase": "https://www.github.com/WICG/webpayment-donate-uri/issues/",
-    "noLegacyStyle": true,
-    "editors": [{
-        name: "rektide",
-        email: "rektide@voodoowarez.com",
-        company: "VoodooWarez Technologies Antilimited",
-        companyURL: "https://voodoowarez.com",
-      },
-      // Add additional editors here.
-      // https://github.com/w3c/respec/wiki/editors
-    ],
-    "shortName": "webpayment-donate-uri",
-    "specStatus": "CG-DRAFT",
-    "subjectPrefix": "[webpayment-donate-uri]",
-    "wg": "WICG",
-    "otherLinks": [{
-      "key": "Repository",
-      "data": [{
-        "value": "We are on Github.",
-        "href": "https://github.com/WICG/webpayment-donate-uri"
-      }, {
-        "value": "File a bug.",
-        "href": "https://github.com/WICG/webpayment-donate-uri/issues"
-      }, {
-        "value": "Commit history.",
-        "href": "https://github.com/WICG/webpayment-donate-uri/commits/gh-pages"
-      }, ]
-    }],
-  };
-  </script>
+	<meta charset="utf-8">
+	<title>The Webpayment Donate Uri</title>
+	<script src="https://www.w3.org/Tools/respec/respec-w3c-common" class="remove"></script>
+	<script class='remove'>
+	"use strict";
+	// See https://github.com/w3c/respec/wiki/ for how to configure ReSpec
+	var respecConfig = {
+		"doRDFa": false,
+		"format": "markdown",
+		"githubAPI": "https://api.github.com/repos/rektide/webpayment-donate-uri",
+		"issueBase": "https://www.github.com/rektide/webpayment-donate-uri/issues/",
+		"noLegacyStyle": true,
+		"editors": [{
+				name: "rektide",
+				email: "rektide@voodoowarez.com",
+				company: "VoodooWarez Technologies Antilimited",
+				companyURL: "https://voodoowarez.com",
+			},
+		],
+		"shortName": "webpayment-donate-uri",
+		"specStatus": "CG-DRAFT",
+		"subjectPrefix": "[pay-donate]",
+		"wg": "WICG?",
+		"otherLinks": [{
+			"key": "Repository",
+			"data": [{
+				"value": "Github",
+				"href": "https://github.com/rektide/webpayment-donate-uri"
+			}, {
+				"value": "File a bug.",
+				"href": "https://github.com/rektide/webpayment-donate-uri/issues"
+			}, {
+				"value": "Commit history.",
+				"href": "https://github.com/rektide/webpayment-donate-uri/commits/gh-pages"
+			}, ]
+		}],
+	};
+	</script>
 </head>
 
 <body>
-  <section id="abstract">
-    <p>
-      This specification does neat stuff.
-    </p>
-  </section>
-  <section id="sotd">
-    <p>
-      This is an unofficial proposal.
-    </p>
-  </section>
-  <section id="introduction">
-    <h2>Introduction</h2>
-    <p>
-      See <a href="https://github.com/w3c/respec/wiki/User's-Guide">ReSpec's
-      user guide</a> for how to get started!
-    </p>
-  </section>
-  <section data-dfn-for="Foo">
-    <h2>Start your spec!</h2>
-    <pre class="idl">
-    interface Foo {
-      attribute Bar bar;
-      void doTheFoo();
-    };
-    </pre>
-    <p>
-      See <a href="https://github.com/w3c/respec/wiki/WebIDL-Guide">ReSpec's
-      WebIDL guide</a> for how to write [[!WebIDL-2]] interfaces!
-    </p>
-    <p>
-      The <dfn>doTheFoo</dfn> method.
-    </p>
-    <p>
-      The <dfn>bar</dfn> attribute.
-    </p>
-  </section>
+	<section id="abstract">
+		<p>
+			This specification allows a webpage to indicate the presence of a page for receiving donations.
+			Anyone wishing to make a donation to the website can issue a request to this page, specifying the amount they wish to donate.
+			The page will create a Web Payments Payment Request in the browser.
+			User-agents are encouraged to create automated means of hitting this endpoint and accepting the payment request to make regular donations possible.
+		</p>
+	</section>
+	<section id="sotd">
+		<p>
+			This is a good idea to getting artists and people paid, but this document unofficial.
+		</p>
+	</section>
+
+	<section id="introduction">
+		<h2>Introduction</h2>
+		<p>
+			<!-- See <a href="https://github.com/w3c/respec/wiki/User's-Guide">ReSpec's
+			user guide</a> for how to get started! -->
+			Web Payment Donate URI provides a way for a User-agent to realize & act upon a "donation" endpoint provided by a web page.
+		</p>
+		<p>
+			A web host which is setup for WebPayment Donation URI will provide a endpoint, which when given an <pre>amount</pre> in the querystring, <a data-cite"!payment-request#constructor">creates</a> and <a data-cite="https://www.w3.org/TR/payment-request/#show()-method">shows <a data-cite="!payment-request">Payment Request</a> for that amount.
+		</p>
+	</section>
+
+	<section data-dfn-for="Well-known">
+		<h2>Well-Known URI</h2>
+	</section>
+
+	<section data-dfn-for="PageLink">
+		<h2>Page Link</h2>
+		<p>
+			Links in a page's headers may include a link with a link-relation of "webpayment-donate"
+		</p>
+	</section>
+	<section data-dfn-for="Embedded">
+	</section>
+
+	<section data-dfn-for="Link">
+	</section>
+
+	<section data-dfn-for="Foo">
+		<h2>Start your spec!</h2>
+		<pre class="idl">
+		interface Foo {
+			attribute Bar bar;
+			void doTheFoo();
+		};
+		</pre>
+		<p>
+			See <a href="https://github.com/w3c/respec/wiki/WebIDL-Guide">ReSpec's
+			WebIDL guide</a> for how to write [[!WebIDL-2]] interfaces!
+		</p>
+		<p>
+			The <dfn>doTheFoo</dfn> method.
+		</p>
+		<p>
+			The <dfn>bar</dfn> attribute.
+		</p>
+	</section>
 </body>
 
 </html>
