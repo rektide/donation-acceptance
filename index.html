@@ -98,13 +98,13 @@
 				Links in a page's headers may include a link with a link-relation of "donation-acceptance" to indicate the presence of a donation acceptance URI.
 			</p>
 			<p>Example:</p>
-			<pre>
+			<pre class="example" title="donation acceptance link in header">
 				<link rel="donation-acceptance" href="/.well-known/donation-acceptance"></link>
 			</pre>
 			<p>
 				Links may be offered to alternative locations:
 			</p>
-			<pre>
+			<pre class="example" title="donation acceptance non-default link in header">
 				<link rel="donation-acceptance" href="/donate"></link>
 			</pre>
 		</section>
@@ -115,7 +115,7 @@
 				`potentialAction` of <a href="http://schema.org/DonateAction">DonateAction</a>.
 			<p>
 			<p>Example:</p>
-			<pre>
+			<pre class="example" title="linked-data DonationAction EntryPoint">
 				{
 					"@context": {
 						"@vocab": "http://schema.org/"
@@ -127,6 +127,9 @@
 					}
 				}
 			</pre>
+			<p>
+				This data may also be constructed as Microdata or RDFa markup in HTML.
+			</p>
 		</section>
 	</section>
 </body>
