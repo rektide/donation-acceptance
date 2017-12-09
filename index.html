@@ -78,12 +78,9 @@
 			Two main uses are provided:
 		</p>
 		<ul>
-			<li>Ability to discover donation-acceptance on a web page or host.</li>
-			<li>Donation to the donation-acceptance endpoint, by a Web Payments interface.</li>
+			<li>Ability to <a data-cite="discover">discover</a> donation-acceptance on a web page or host.</li>
+			<li><a data-cite="donation">Donation</a> to the donation-acceptance endpoint, by a Web Payments interface.</li>
 		</ul>
-		<ol>
-			<li><a href="discovery">Discover the donate endpint
-		</ol>
 	</section>
 
 	<section id="discovery">
@@ -140,6 +137,25 @@
 				This data may also be constructed as Microdata or RDFa markup in HTML.
 			</p>
 		</section>
+	</section>
+	<section id="donation">
+		<h2>Donation</h2>
+		<p>
+			Issuing a HTTP GET or POST to the endpoint will return a web page that ought fire a Web Payment Request,
+			for the amount specified in it's "amount" query parameter.
+		</p>
+		<pre class="example" title="Donation HTTP request">
+GET /.well-known/donate?amount=20.00 HTTP/1.1
+Host: yoyodyne.net
+Date: Thur, 07 Dec 2017 20:51:35 GMT
+Accept: text/html
+		</pre>
+		<p>
+			Were a user to go to this page, they should expect a Web Payment Payment Request interface to appear in their User-agent.
+		</p>
+		<p>
+			If the user completes this payment request action, the donation is expected to be complete.
+		</p>
 	</section>
 </body>
 </html>
