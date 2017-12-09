@@ -1,0 +1,15 @@
+{
+	"name": "donation-acceptance",
+	"version": "1.0.0",
+	"description": "Donation Acceptance Specification ",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "rektide de la faye <rektide@voodoowarez.com>",
+	"license": "MIT",
+	"devDependencies": {
+		"wicg": "^1.2.1"
+	}
+}

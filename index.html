@@ -1,18 +1,17 @@
 <!doctype html>
 <html lang="en">
-
 <head>
 	<meta charset="utf-8">
-	<title>The Webpayment Donate Uri</title>
+	<title>Donation Acceptance Endpoint Specification</title>
 	<script src="https://www.w3.org/Tools/respec/respec-w3c-common" class="remove"></script>
 	<script class='remove'>
 	"use strict";
 	// See https://github.com/w3c/respec/wiki/ for how to configure ReSpec
 	var respecConfig = {
-		"doRDFa": false,
+		"doRDFa": true,
 		"format": "markdown",
-		"githubAPI": "https://api.github.com/repos/rektide/webpayment-donate-uri",
-		"issueBase": "https://www.github.com/rektide/webpayment-donate-uri/issues/",
+		"githubAPI": "https://api.github.com/repos/rektide/donation-acceptance",
+		"issueBase": "https://www.github.com/rektide/donation-acceptance/issues/",
 		"noLegacyStyle": true,
 		"editors": [{
 				name: "rektide",
@@ -21,21 +20,21 @@
 				companyURL: "https://voodoowarez.com",
 			},
 		],
-		"shortName": "webpayment-donate-uri",
+		"shortName": "tipjar",
 		"specStatus": "CG-DRAFT",
-		"subjectPrefix": "[pay-donate]",
+		"subjectPrefix": "[tipjar]",
 		"wg": "WICG?",
 		"otherLinks": [{
 			"key": "Repository",
 			"data": [{
 				"value": "Github",
-				"href": "https://github.com/rektide/webpayment-donate-uri"
+				"href": "https://github.com/rektide/donation-acceptance"
 			}, {
 				"value": "File a bug.",
-				"href": "https://github.com/rektide/webpayment-donate-uri/issues"
+				"href": "https://github.com/rektide/donation-acceptance/issues"
 			}, {
 				"value": "Commit history.",
-				"href": "https://github.com/rektide/webpayment-donate-uri/commits/gh-pages"
+				"href": "https://github.com/rektide/donation-acceptance/commits/gh-pages"
 			}, ]
 		}],
 	};
@@ -45,65 +44,84 @@
 <body>
 	<section id="abstract">
 		<p>
-			This specification allows a webpage to indicate the presence of a page for receiving donations.
+			This specification allows a web page or web host to indicate the presence of a page for receiving and accepting donations.
 			Anyone wishing to make a donation to the website can issue a request to this page, specifying the amount they wish to donate.
 			The page will create a Web Payments Payment Request in the browser.
-			User-agents are encouraged to create automated means of hitting this endpoint and accepting the payment request to make regular donations possible.
 		</p>
 	</section>
 	<section id="sotd">
 		<p>
-			This is a good idea to getting artists and people paid, but this document unofficial.
+			This is a good idea to getting artists and people paid, but this document unofficial and in early draft form.
 		</p>
 	</section>
-
 	<section id="introduction">
 		<h2>Introduction</h2>
 		<p>
-			<!-- See <a href="https://github.com/w3c/respec/wiki/User's-Guide">ReSpec's
-			user guide</a> for how to get started! -->
 			Web Payment Donate URI provides a way for a User-agent to realize & act upon a "donation" endpoint provided by a web page.
 		</p>
 		<p>
-			A web host which is setup for WebPayment Donation URI will provide a endpoint, which when given an <pre>amount</pre> in the querystring, <a data-cite"!payment-request#constructor">creates</a> and <a data-cite="https://www.w3.org/TR/payment-request/#show()-method">shows <a data-cite="!payment-request">Payment Request</a> for that amount.
+			A web host which is setup for WebPayment Donation URI will provide a endpoint, which when given an
+            <a>amount</a> in the querystring, <a data-cite"!payment-request#constructor">creates</a> and <a data-cite="https://www.w3.org/TR/payment-request/#show()-method">shows <a data-cite="!payment-request">Payment Request</a> for that amount.
 		</p>
+		<section data
 	</section>
 
-	<section data-dfn-for="Well-known">
-		<h2>Well-Known URI</h2>
+	<section id="flow">
+		<h2>Donation Acceptance Flow</h2>
+		<section>
 	</section>
 
-	<section data-dfn-for="PageLink">
-		<h2>Page Link</h2>
+	<section id="discovery">
+		<h2>Discovering the Donation Acceptance Endpoint </h2>
 		<p>
-			Links in a page's headers may include a link with a link-relation of "webpayment-donate"
-		</p>
-	</section>
-	<section data-dfn-for="Embedded">
-	</section>
-
-	<section data-dfn-for="Link">
-	</section>
-
-	<section data-dfn-for="Foo">
-		<h2>Start your spec!</h2>
-		<pre class="idl">
-		interface Foo {
-			attribute Bar bar;
-			void doTheFoo();
-		};
-		</pre>
-		<p>
-			See <a href="https://github.com/w3c/respec/wiki/WebIDL-Guide">ReSpec's
-			WebIDL guide</a> for how to write [[!WebIDL-2]] interfaces!
+			In order to provide enhanced services to it's user, a User-agent must first become aware of the Donation Acceptance endpoint.
 		</p>
 		<p>
-			The <dfn>doTheFoo</dfn> method.
+			Three options are provided for advertisement:
 		</p>
-		<p>
-			The <dfn>bar</dfn> attribute.
-		</p>
+		<section id="well-known">
+			<h3>Well-Known URI</h3>
+			<p>
+				Donation acceptance should be available on the designated <a data-cite="rfc5785">Well-known URI"</a>, which is designated `/.well-known/donate`.
+				Issuing a HEAD or GET request to this endpoint should be sufficient to indicate the presence of a Donation Acceptance implementation.
+			</p>
+		</section>
+		<section id="link-type">
+			<h3>Page Link</h3>
+			<p>
+				Links in a page's headers may include a link with a link-relation of "donation-acceptance" to indicate the presence of a donation acceptance URI.
+			</p>
+			<p>Example:</p>
+			<pre>
+				<link rel="donation-acceptance" href="/.well-known/donation-acceptance"></link>
+			</pre>
+			<p>
+				Links may be offered to alternative locations:
+			</p>
+			<pre>
+				<link rel="donation-acceptance" href="/donate"></link>
+			</pre>
+		</section>
+		<section id="linked-data">
+			<h3>Embedded linked-data</h3>
+			<p>
+				Donation Acceptance can be indicated via embedded linked-data, via a <a href="http://schema.org/EntryPoint">EntryPoint</a> with a
+				`potentialAction` of <a href="http://schema.org/DonateAction">DonateAction</a>.
+			<p>
+			<p>Example:</p>
+			<pre>
+				{
+					"@context": {
+						"@vocab": "http://schema.org/"
+					},
+					"@type": "EntryPoint",
+					"url": "/.well-known/donate",
+					"potentialAction": {
+						"@type": "DonateAction"
+					}
+				}
+			</pre>
+		</section>
 	</section>
 </body>
-
 </html>
