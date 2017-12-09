@@ -42,22 +42,6 @@
 </head>
 
 <body>
-	<script type="text/javascript">
-	function decomment(doc, content) {
-		// perform transformations to make it render an
-		content = content.replace(/<!--/, '');
-		content = content.replace(/-->/, '');
-		content = _esc(content);
-		return content ;
-	}
-	function _esc(s) {
-		s = s.replace(/&/g,'&amp;');
-		s = s.replace(/>/g,'&gt;');
-		s = s.replace(/"/g,'&quot;');
-		s = s.replace(/</g,'&lt;');
-		return s;
-	}
-	</script>
 	<section id="abstract">
 		<p>
 			This specification allows a web page or web host to indicate the presence of a page for receiving and accepting donations.
@@ -114,14 +98,14 @@
 				Links in a page's headers may include a link with a link-relation of "donation-acceptance" to indicate the presence of a donation acceptance URI.
 			</p>
 			<p>Example:</p>
-			<pre class="example" title="donation acceptance link in header" data-transform="decomment"><!--
-				<link rel="donation-acceptance" href="/.well-known/donation-acceptance"></link>-->
+			<pre class="example" title="donation acceptance link in header" data-tranform="decomment">
+				&lt;link rel=donation-acceptance" href="/.well-known/donation-acceptance"&gt;&lt;/link&gt;
 			</pre>
 			<p>
 				Links may be offered to alternative locations:
 			</p>
-			<pre class="example" title="donation acceptance non-default link in header" data-transform="decomment"><!--
-				<link rel="donation-acceptance" href="/donate"></link>-->
+			<pre class="example" title="donation acceptance non-default link in header" data-transform="decomment">
+				&lt;link rel="donation-acceptance" href="/donate"&gt;&lt;/link&lt;
 			</pre>
 		</section>
 		<section id="linked-data">
