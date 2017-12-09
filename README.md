@@ -1,4 +1,5 @@
-# The Webpayment Donate Uri
+# Donation Acceptance Specification
 
-This is the repository for The Webpayment Donate Uri. You're welcome to
-[[contribute]](CONTRIBUTING.md)!
+This is the repository for The Donation Acceptance. Please view [here](https://rektide.github.com/donation-acceptance).
+
+You're welcome to [[contribute]](CONTRIBUTING.md)!
